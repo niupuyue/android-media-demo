@@ -13,7 +13,6 @@ import java.io.OutputStream;
 import java.util.List;
 
 /**
- * Created by ZhouMeng on 2018/8/31.
  * 将pcm文件转化为wav文件
  * pcm是无损wav文件中音频数据的一种编码方式，pcm加上wav文件头就可以转为wav格式，但wav还可以用其它方式编码。
  * 此类就是通过给pcm加上wav的文件头，来转为wav格式

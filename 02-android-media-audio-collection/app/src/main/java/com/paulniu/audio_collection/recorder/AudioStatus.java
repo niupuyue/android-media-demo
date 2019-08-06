@@ -1,7 +1,6 @@
 package com.paulniu.audio_collection.recorder;
 
 /**
- * Created by ZhouMeng on 2018/9/5.
  * 录音对象的状态
  */
 

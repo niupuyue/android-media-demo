@@ -4,7 +4,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 /**
- * Created by ZhouMeng on 2018/8/31.
  * wav文件头
  */
 public class WaveHeader {

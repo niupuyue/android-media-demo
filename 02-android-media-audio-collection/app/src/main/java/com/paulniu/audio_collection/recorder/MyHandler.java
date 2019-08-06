@@ -8,7 +8,6 @@ import android.os.Message;
 import java.lang.ref.WeakReference;
 
 /**
- * Created by ZhouMeng on 2018/9/10.
  * 实际项目中的时候，可以在构造函数中把 BaseActivity 传过来，抽象 requestOver 方法，提高代码的可重用性
  */
 

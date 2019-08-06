@@ -4,7 +4,6 @@ import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 
 /**
- * Created by ZhouMeng on 2018/9/7.
  * 监听电话
  * 因为只用到来电监听，别的没做处理
  */

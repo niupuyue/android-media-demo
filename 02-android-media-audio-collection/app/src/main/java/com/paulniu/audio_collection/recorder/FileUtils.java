@@ -7,7 +7,6 @@ import java.io.File;
 import java.util.List;
 
 /**
- * Created by ZhouMeng on 2018/8/31.
  * 管理录音文件的类
  */
 public class FileUtils {

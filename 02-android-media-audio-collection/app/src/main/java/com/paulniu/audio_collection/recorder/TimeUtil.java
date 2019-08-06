@@ -1,7 +1,6 @@
 package com.paulniu.audio_collection.recorder;
 
 /**
- * Created by ZhouMeng on 2018/9/4.
  * 数字转时分秒
  */
 public class TimeUtil {

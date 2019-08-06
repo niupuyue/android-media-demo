@@ -22,7 +22,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * Created by ZhouMeng on 2018/8/31.
  * 用于实现录音、暂停、继续、停止、播放
  * 最近看了下pcm和wav，内容真多，要是有一些参数不理解的，可以查阅资料
  * PCM BufferSize = 采样率 * 采样时间 * 采样位深 / 8 * 通道数（Bytes）
