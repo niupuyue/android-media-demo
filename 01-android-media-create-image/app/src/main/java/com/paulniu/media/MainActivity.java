@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
         btn03.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(MainActivity.this, ImageSurfaceActivity.class);
+                startActivity(intent);
             }
         });
     }
