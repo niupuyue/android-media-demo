@@ -1,4 +1,4 @@
-package com.paulniu.audio_collection.recorder;
+package com.paulniu.audio_collection.AudioRecorder;
 
 /**
  * 录音对象的状态

@@ -2,16 +2,8 @@ package com.paulniu.audio_collection;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.media.AudioAttributes;
-import android.media.AudioFormat;
-import android.media.AudioManager;
-import android.media.AudioRecord;
-import android.media.AudioTrack;
-import android.media.MediaRecorder;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,10 +15,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.paulniu.audio_collection.recorder.AudioRecorder;
-import com.paulniu.audio_collection.recorder.AudioStatus;
-import com.paulniu.audio_collection.recorder.IAudioCallback;
-import com.paulniu.audio_collection.recorder.MyHandler;
+import com.paulniu.audio_collection.AudioRecorder.AudioRecorder;
+import com.paulniu.audio_collection.AudioRecorder.AudioStatus;
+import com.paulniu.audio_collection.AudioRecorder.IAudioCallback;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

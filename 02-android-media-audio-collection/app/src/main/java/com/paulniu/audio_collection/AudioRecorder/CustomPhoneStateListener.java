@@ -1,4 +1,4 @@
-package com.paulniu.audio_collection.recorder;
+package com.paulniu.audio_collection.AudioRecorder;
 
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;

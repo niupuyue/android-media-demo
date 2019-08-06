@@ -1,4 +1,4 @@
-package com.paulniu.audio_collection.recorder;
+package com.paulniu.audio_collection.utils;
 
 /**
  * 数字转时分秒
