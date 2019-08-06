@@ -20,6 +20,10 @@ public class SelfImageView extends View {
 
     private Paint mPaint;
     private Bitmap mBitmap;
+    private Context context;
+
+    private  Rect rect;
+    private Rect descRect;
 
     public SelfImageView(Context context) {
         this(context, null);
@@ -31,19 +35,21 @@ public class SelfImageView extends View {
 
     public SelfImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        this.context = context;
         initView();
     }
 
     private void initView() {
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+        mBitmap = BitmapFactory.decodeResource(getContext().getResources(), R.mipmap.ic_launcher1);
+
+        rect = new Rect(0, 0, mBitmap.getHeight(), mBitmap.getWidth());
+        descRect = new Rect(100, 100, mBitmap.getHeight() + 100, mBitmap.getWidth() + 100);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        Rect rect = new Rect(0, 0, mBitmap.getHeight(), mBitmap.getWidth());
-        Rect descRect = new Rect(100, 100, mBitmap.getHeight() + 100, mBitmap.getWidth() + 100);
         canvas.drawBitmap(mBitmap, rect, descRect, mPaint);
     }
 }

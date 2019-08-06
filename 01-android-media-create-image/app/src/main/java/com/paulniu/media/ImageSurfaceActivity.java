@@ -26,7 +26,7 @@ public class ImageSurfaceActivity extends AppCompatActivity implements SurfaceHo
             new Runnable() {
                 @Override
                 public void run() {
-                    Bitmap mBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+                    Bitmap mBitmap = BitmapFactory.decodeResource(ImageSurfaceActivity.this.getResources(), R.mipmap.ic_launcher1);
                     SurfaceHolder holder = surfaceView.getHolder();
                     Canvas canvas = holder.lockCanvas();// 获取画布
                     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);// 声明一个画笔
