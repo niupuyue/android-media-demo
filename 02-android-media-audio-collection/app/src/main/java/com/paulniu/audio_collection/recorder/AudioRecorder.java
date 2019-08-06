@@ -11,6 +11,8 @@ import android.text.TextUtils;
 
 import androidx.annotation.RequiresApi;
 
+import com.paulniu.audio_collection.utils.FileUtils;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

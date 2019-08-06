@@ -2,6 +2,8 @@ package com.paulniu.audio_collection.recorder;
 
 import android.util.Log;
 
+import com.paulniu.audio_collection.utils.FileUtils;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;

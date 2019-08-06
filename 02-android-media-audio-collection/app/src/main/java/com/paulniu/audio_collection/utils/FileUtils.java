@@ -1,4 +1,4 @@
-package com.paulniu.audio_collection.recorder;
+package com.paulniu.audio_collection.utils;
 
 import android.os.Environment;
 import android.text.TextUtils;
@@ -99,4 +99,32 @@ public class FileUtils {
             file.delete();
         }
     }
+
+    /**
+     * 创建mediarecord的语音缓存文件
+     */
+    public static File createMediaRecordCacheFile(String fileName){
+        if(TextUtils.isEmpty(fileName)){
+            throw new NullPointerException("fileName isEmpty");
+        }
+        if(!isSdcardExit()){
+            throw new IllegalStateException("sd card no found");
+        }
+        String mAudioRawPath = "";
+        if (isSdcardExit()) {
+            if (!fileName.endsWith(".pcm")) {
+                fileName = fileName + ".pcm";
+            }
+            String fileBasePath = Environment.getExternalStorageDirectory().getAbsolutePath() + AUDIO_PCM_BASE_PATH;
+            File file = new File(fileBasePath);
+            //创建目录
+            if (!file.exists()) {
+                file.mkdirs();
+            }
+            mAudioRawPath = fileBasePath + fileName;
+        }
+        File file = new File(mAudioRawPath);
+        return file;
+    }
+
 }
