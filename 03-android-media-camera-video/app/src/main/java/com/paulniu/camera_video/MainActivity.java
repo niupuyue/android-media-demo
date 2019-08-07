@@ -18,7 +18,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btn01, btn02;
+    private Button btn01, btn02, btn03;
 
     // 声明一个集合，在后面的代码中用来存储用户拒绝授权的权
     private List<String> mPermissionList = new ArrayList<>();
@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
         btn02 = findViewById(R.id.btn02);
 
+        btn03 = findViewById(R.id.btn03);
+
         btn01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,6 +47,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, TextureViewActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn03.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SurfaceView2Activity.class);
                 startActivity(intent);
             }
         });

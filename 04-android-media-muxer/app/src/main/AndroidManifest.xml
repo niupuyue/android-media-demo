@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.paulniu.camera_video">
-
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-feature android:name="android.permission.camera" />
+    package="com.paulniu.media_muxer">
 
     <application
         android:allowBackup="true"
@@ -19,9 +16,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TextureViewActivity" />
-        <activity android:name=".SurfaceViewActivity" />
-        <activity android:name=".SurfaceView2Activity" />
     </application>
 
 </manifest>
