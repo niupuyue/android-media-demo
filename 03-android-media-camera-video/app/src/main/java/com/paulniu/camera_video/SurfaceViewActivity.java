@@ -137,7 +137,7 @@ public class SurfaceViewActivity extends AppCompatActivity implements View.OnCli
                 // 获取摄像头相对于屏幕的方向
                 Integer facing = cameraCharacteristics.get(CameraCharacteristics.LENS_FACING);
 
-                if (isFontCamera) {
+                if (!isFontCamera) {
                     // 设置打开前置摄像头
                     if (facing != null && facing == CameraCharacteristics.LENS_FACING_BACK)
                         continue;
