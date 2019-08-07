@@ -59,11 +59,11 @@ public class SurfaceViewActivity extends AppCompatActivity implements View.OnCli
     private CameraCaptureSession session;
     private SurfaceHolder holder;
 
+    private boolean isFontCamera = true;
+
     private boolean isSurfaceViewCreate = false;
     private int surfaceViewHolderWidth;
     private int surfaceViewHolderHeight;
-
-    private boolean isFontCamera = true;
 
     private Button btn_surfaceview_font;
     private Button btn_surfaceview_back;
@@ -76,6 +76,9 @@ public class SurfaceViewActivity extends AppCompatActivity implements View.OnCli
 
         btn_surfaceview_font = findViewById(R.id.btn_surfaceview_font);
         btn_surfaceview_back = findViewById(R.id.btn_surfaceview_back);
+
+        btn_surfaceview_font.setOnClickListener(this);
+        btn_surfaceview_back.setOnClickListener(this);
 
     }
 
@@ -101,12 +104,8 @@ public class SurfaceViewActivity extends AppCompatActivity implements View.OnCli
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         @Override
         public void surfaceCreated(SurfaceHolder surfaceHolder) {
-//            surfaceViewHolderWidth = surfaceHolder.getSurfaceFrame().width();
-//            surfaceViewHolderHeight = surfaceHolder.getSurfaceFrame().height();
-//            isSurfaceViewCreate = true;
-            // 设置摄像头的基本配合信息，宽高跟SurfaceView的尺寸相关
-            setupCamerar(surfaceHolder.getSurfaceFrame().width(), surfaceHolder.getSurfaceFrame().height());
-            openCamera();
+            surfaceViewHolderWidth = surfaceHolder.getSurfaceFrame().width();
+            surfaceViewHolderHeight = surfaceHolder.getSurfaceFrame().height();
         }
 
         @Override
@@ -137,10 +136,16 @@ public class SurfaceViewActivity extends AppCompatActivity implements View.OnCli
                 CameraCharacteristics cameraCharacteristics = cameraManager.getCameraCharacteristics(cameraId);
                 // 获取摄像头相对于屏幕的方向
                 Integer facing = cameraCharacteristics.get(CameraCharacteristics.LENS_FACING);
-                // 设置打开后置摄像头
-                if (facing != null && facing == CameraCharacteristics.LENS_FACING_FRONT)
-                    continue;
 
+                if (isFontCamera) {
+                    // 设置打开前置摄像头
+                    if (facing != null && facing == CameraCharacteristics.LENS_FACING_BACK)
+                        continue;
+                } else {
+                    // 设置打开后置摄像头
+                    if (facing != null && facing == CameraCharacteristics.LENS_FACING_FRONT)
+                        continue;
+                }
                 // 获取StreamConfigurationMap，他是管理摄像头支持的所有输出格式和尺寸
                 StreamConfigurationMap map = cameraCharacteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
                 assert map != null;
@@ -276,6 +281,14 @@ public class SurfaceViewActivity extends AppCompatActivity implements View.OnCli
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onClick(View v) {
+        if (session != null) {
+            session.close();
+            session = null;
+        }
+        if (cameraDevice != null) {
+            cameraDevice.close();
+            cameraDevice = null;
+        }
         switch (v.getId()) {
             case R.id.btn_surfaceview_font:
                 // 打开后置摄像头
@@ -287,7 +300,6 @@ public class SurfaceViewActivity extends AppCompatActivity implements View.OnCli
             case R.id.btn_surfaceview_back:
                 // 打开前置摄像头
                 isFontCamera = false;
-                // 设置摄像头的基本配合信息，宽高跟SurfaceView的尺寸相关
                 setupCamerar(surfaceViewHolderWidth, surfaceViewHolderHeight);
                 openCamera();
                 break;

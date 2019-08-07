@@ -22,6 +22,7 @@
             android:id="@+id/btn_texture_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_weight="1"
             android:text="使用后置摄像头" />
 
