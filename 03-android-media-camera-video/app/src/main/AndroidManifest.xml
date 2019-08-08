@@ -2,8 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.paulniu.camera_video">
 
+    <!--相机权限-->
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-feature android:name="android.permission.camera" />
+    <!--使用摄像头硬件功能-->
+    <uses-feature android:name="android.hardware.camera" />
+    <!--自动对焦功能-->
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <!--闪光灯功能-->
+    <uses-feature android:name="android.hardware.camera.flash" />
+    <!-- 录音权限 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- 读写权限-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -22,6 +32,8 @@
         <activity android:name=".TextureViewActivity" />
         <activity android:name=".SurfaceViewActivity" />
         <activity android:name=".SurfaceView2Activity" />
+        <activity android:name=".VideoMediaRecordActivity" />
+        <activity android:name=".RecordVideoActivity" />
     </application>
 
 </manifest>

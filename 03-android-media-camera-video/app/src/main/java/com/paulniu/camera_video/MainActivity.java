@@ -18,7 +18,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btn01, btn02, btn03;
+    private Button btn01, btn02, btn03, btn04, btn05;
 
     // 声明一个集合，在后面的代码中用来存储用户拒绝授权的权
     private List<String> mPermissionList = new ArrayList<>();
@@ -34,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
         btn02 = findViewById(R.id.btn02);
 
         btn03 = findViewById(R.id.btn03);
+
+        btn04 = findViewById(R.id.btn04);
+
+        btn05 = findViewById(R.id.btn05);
 
         btn01.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,9 +63,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btn04.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, VideoMediaRecordActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn05.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, RecordVideoActivity.class);
+                startActivity(intent);
+            }
+        });
+
         // 申请权限
         setPermissions(new String[]{
-                        Manifest.permission.CAMERA},
+                        Manifest.permission.CAMERA,
+                        Manifest.permission.RECORD_AUDIO},
                 ACCESS_FINE_ERROR_CODE);
     }
 

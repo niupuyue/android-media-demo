@@ -25,4 +25,16 @@
         android:layout_height="wrap_content"
         android:text="使用SurfaceView预览摄像头--方法二" />
 
+    <Button
+        android:id="@+id/btn04"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="录制视频" />
+
+    <Button
+        android:id="@+id/btn05"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="另外一种方法录制视频" />
+
 </LinearLayout>
