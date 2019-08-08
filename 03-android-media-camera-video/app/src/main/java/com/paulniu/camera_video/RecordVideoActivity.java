@@ -232,14 +232,12 @@ public class RecordVideoActivity extends Activity implements SurfaceHolder.Callb
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width,
                                int height) {
-        // TODO Auto-generated method stub
         // 将holder，这个holder为开始在onCreate里面取得的holder，将它赋给mSurfaceHolder
         mSurfaceHolder = holder;
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        // TODO Auto-generated method stub
         // 将holder，这个holder为开始在onCreate里面取得的holder，将它赋给mSurfaceHolder
         mSurfaceHolder = holder;
         startPreView(holder);
@@ -247,7 +245,6 @@ public class RecordVideoActivity extends Activity implements SurfaceHolder.Callb
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-        // TODO Auto-generated method stub
         // surfaceDestroyed的时候同时对象设置为null
         mSurfaceview = null;
         mSurfaceHolder = null;
