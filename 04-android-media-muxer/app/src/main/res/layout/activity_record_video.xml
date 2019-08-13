@@ -4,6 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <SurfaceView
+        android:id="@+id/recordSurfaceView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <ImageView
         android:id="@+id/iv_start_stop_record"
         android:layout_width="50dp"
