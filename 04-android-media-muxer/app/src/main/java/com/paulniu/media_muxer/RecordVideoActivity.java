@@ -19,6 +19,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
 import java.util.Calendar;
+import java.util.List;
+import java.util.Timer;
 import java.util.TimerTask;
 
 /**
@@ -40,6 +42,7 @@ public class RecordVideoActivity extends AppCompatActivity implements SurfaceHol
     private Camera camera;
     private String path;
     private TimerTask timerTask;
+    private int recordTime = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,7 +58,7 @@ public class RecordVideoActivity extends AppCompatActivity implements SurfaceHol
         iv_start_stop_record.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startRecordVideo();
             }
         });
 
@@ -92,9 +95,9 @@ public class RecordVideoActivity extends AppCompatActivity implements SurfaceHol
 
                 // 设置输出地址
                 String sdpath = getSDPath();
-                if (!TextUtils.isEmpty(sdpath)){
+                if (!TextUtils.isEmpty(sdpath)) {
                     File dir = new File(sdpath + "paulniu");
-                    if (!dir.exists()){
+                    if (!dir.exists()) {
                         dir.mkdirs();
                     }
                     path = dir + "/" + getDate() + ".mp4";
@@ -110,14 +113,15 @@ public class RecordVideoActivity extends AppCompatActivity implements SurfaceHol
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-        }else {
-            if (mStartedFlag){
+        } else {
+            // 停止录制
+            if (mStartedFlag) {
                 try {
                     mRecorder.stop();
-                    if (timerTask != null){
+                    if (timerTask != null) {
 
                     }
-                }catch (Exception ex){
+                } catch (Exception ex) {
                     ex.printStackTrace();
                 }
             }
@@ -148,18 +152,125 @@ public class RecordVideoActivity extends AppCompatActivity implements SurfaceHol
         return date;
     }
 
+    /**
+     * 开始一个计时器
+     */
+    private void startRecordTimer() {
+        timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        recordTime++;
+                        int m = recordTime / 60;
+                        int s = recordTime % 60;
+                        String strm = String.valueOf(m);
+                        String strs = String.valueOf(s);
+                        if (m < 10) {
+                            strm = "0" + m;
+                        }
+                        if (s < 10) {
+                            strs = "-" + s;
+                        }
+                        // 将计时信息展现出来 TODO
+
+                    }
+                });
+            }
+        };
+        Timer recordTimer = new Timer(true);
+        recordTimer.schedule(timerTask, 0, 1000);
+    }
+
     @Override
     public void surfaceCreated(SurfaceHolder surfaceHolder) {
-
+        // 将这个surfaceHolder赋值给在oncreate中创建的surfaceHolder
+        this.mSurfaceHolder = surfaceHolder;
     }
 
     @Override
     public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {
-
+        // 将当前的surfaceHolder赋值给oncreate中创建的surfaceHolder
+        this.mSurfaceHolder = surfaceHolder;
+        startPreView(surfaceHolder);
     }
 
     @Override
     public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
+        // surfaceDestoryed被调用的时候将对象置为null
+        mSurfaceHolder = null;
+        recordSurfaceView = null;
+        if (mRecorder != null) {
+            mRecorder.release();
+            mRecorder = null;
+        }
+    }
 
+    /**
+     * 开始预览
+     */
+    private void startPreView(SurfaceHolder holder) {
+        try {
+            if (camera == null) {
+                // 默认打开后置摄像头
+                camera = Camera.open(Camera.CameraInfo.CAMERA_FACING_BACK);
+            }
+            if (mRecorder == null) {
+                mRecorder = new MediaRecorder();
+            }
+            if (mRecorder != null) {
+                camera.setDisplayOrientation(90);
+                camera.setPreviewDisplay(holder);
+                Camera.Parameters parameters = camera.getParameters();
+                // Camera自动对焦
+                List<String> focusModes = parameters.getSupportedFocusModes();
+                if (focusModes != null) {
+                    for (String mode : focusModes) {
+                        mode.contains("continuous-video");
+                        parameters.setFocusMode("continuous-video");
+                    }
+                }
+                camera.setParameters(parameters);
+                camera.startPreview();
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        recordTime = 0;
+        mStartedFlag = false;
+        iv_start_stop_record.setImageResource(R.mipmap.record_circle_line);
+        if (timerTask != null) {
+            timerTask.cancel();
+        }
+        // 如果正在使用MediaRecorder，需要释放
+        releaseMediaRecorder();
+        // 释放摄像头
+        releaseCamera();
+    }
+
+    private void releaseMediaRecorder() {
+        if (mRecorder != null) {
+            // 清除recorder设置
+            mRecorder.reset();
+            // 释放recorder对象
+            mRecorder.release();
+            mRecorder = null;
+            // 为后续使用锁定摄像头
+            camera.lock();
+        }
+    }
+
+    private void releaseCamera() {
+        if (camera != null) {
+            // 释放摄像头资源
+            camera.release();
+            camera = null;
+        }
     }
 }
