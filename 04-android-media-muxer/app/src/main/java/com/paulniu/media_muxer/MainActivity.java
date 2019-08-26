@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private final static int ACCESS_FINE_ERROR_CODE = 0x0245;
 
     private Button videoRecord;
+    private Button formatVideo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        formatVideo = findViewById(R.id.formatVideo);
+        formatVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,FormatVideoActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // 申请权限
         setPermissions(new String[]{
