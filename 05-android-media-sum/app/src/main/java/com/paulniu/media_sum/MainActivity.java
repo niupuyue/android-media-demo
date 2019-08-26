@@ -332,6 +332,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
+     * 为上一个视频添加bgm
+     */
+    private void addBGM(){
+        
+    }
+
+    /**
      * 当surfaceview被创建的时候
      */
     @Override
@@ -428,6 +435,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.ivRecordVideoAddBG:
                 // 选择为上一个视频添加bgm
+                addBGM();
                 break;
             case R.id.ivRecordVideoRotate:
                 // 翻转相机
