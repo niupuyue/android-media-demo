@@ -48,14 +48,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="从录制的视频中抽出音频，不包含视频"/>
+                android:text="从录制的视频中抽出音频，不包含视频" />
 
             <Button
+                android:id="@+id/formatAudio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/formatAudio"
                 android:layout_marginTop="20dp"
-                android:text="解析音频(不包含视频)"/>
+                android:text="解析音频(不包含视频)" />
 
         </LinearLayout>
 

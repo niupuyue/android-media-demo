@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button videoRecord;
     private Button formatVideo;
+    private Button formatAudio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,FormatVideoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        formatAudio = findViewById(R.id.formatAudio);
+        formatAudio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,FormatAudioActivity.class);
                 startActivity(intent);
             }
         });
