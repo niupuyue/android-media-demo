@@ -17,6 +17,16 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@android:color/transparent">
 
+        <ImageView
+            android:id="@+id/ivRecordVideoAddBG"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:src="@mipmap/bgmusic" />
+
         <TextView
             android:id="@+id/tvRecordVideoTitle"
             android:layout_width="wrap_content"
@@ -26,16 +36,25 @@
             android:textColor="@android:color/white"
             android:textSize="14sp" />
 
+        <ImageView
+            android:id="@+id/ivRecordVideoRotate"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
+            android:src="@mipmap/rotate" />
+
     </RelativeLayout>
 
     <ImageView
         android:id="@+id/ivRecordVidoStartAndStop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
-        android:padding="15dp"
         android:src="@mipmap/start" />
 
     <TextView

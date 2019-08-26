@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tvRecordVideoTitle;
     private ImageView ivRecordVidoStartAndStop;
     private TextView tvRecordVideoTime;
+    private ImageView ivRecordVideoAddBG;
+    private ImageView ivRecordVideoRotate;
     //////////////////////////////////////////////////////////////////////////////////////////////
 
     //////////////////////////////////////////////////////////////////////////////////////////////
@@ -58,7 +60,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private boolean mStartedFlag = false;
     private String saveVideoPath = null;
     private static int timeCount = 0;
-    private SharedPreferences sharedPreferences;
     /////////////////////////////////////////////////////////////////////////////////////////////
 
     private TimerTask timerTask = new TimerTask() {
@@ -79,36 +80,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getWindow().setFormat(PixelFormat.TRANSLUCENT);
         setContentView(R.layout.activity_main);
 
-        sharedPreferences = getPreferences(MODE_PRIVATE);
-//        if (sharedPreferences.getBoolean("isFirstTime", true)) {
-//            final AlertDialog.Builder normalDialog =
-//                    new AlertDialog.Builder(MainActivity.this);
-//            normalDialog.setIcon(R.mipmap.ic_launcher_round);
-//            normalDialog.setTitle("权限获取");
-//            normalDialog.setMessage("为了您更好的使用该应用需要获取相关权限");
-//            normalDialog.setPositiveButton("获取",
-//                    new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            // 申请权限
-//                            askPermission(new String[]{
-//                                    Manifest.permission.CAMERA,
-//                                    Manifest.permission.RECORD_AUDIO,
-//                                    Manifest.permission.READ_EXTERNAL_STORAGE,
-//                                    Manifest.permission.WRITE_EXTERNAL_STORAGE
-//                            }, ACCESS_FINE_ERROR_CODE);
-//                        }
-//                    });
-//            normalDialog.setNegativeButton("取消",
-//                    new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            System.exit(0);
-//                        }
-//                    });
-//            // 显示
-//            normalDialog.show();
-//        }
+        // 申请权限
+        askPermission(new String[]{
+                Manifest.permission.CAMERA,
+                Manifest.permission.RECORD_AUDIO,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+        }, ACCESS_FINE_ERROR_CODE);
+
         initSurfaceView();
     }
 
@@ -125,7 +104,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             // 根据当前未授权的权限，开始申请权限
             if (permissionList.isEmpty()) {
-                sharedPreferences.edit().putBoolean("isFirstTime", false);
             } else {
                 permissions = permissionList.toArray(new String[permissionList.size()]);
                 ActivityCompat.requestPermissions(this, permissions, permissionCode);
@@ -146,11 +124,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSurfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
         // 给surfaceholder设置监听事件
         mSurfaceHolder.addCallback(this);
-
-        //再次设置
-        SurfaceHolder holder = svRecordVideoSurfaceView.getHolder();
-        holder.addCallback(this);
-        holder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
     }
 
     /**
@@ -162,6 +135,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvRecordVideoTitle = findViewById(R.id.tvRecordVideoTitle);
         ivRecordVidoStartAndStop = findViewById(R.id.ivRecordVidoStartAndStop);
         tvRecordVideoTime = findViewById(R.id.tvRecordVideoTime);
+        ivRecordVideoAddBG = findViewById(R.id.ivRecordVideoAddBG);
+        ivRecordVideoRotate = findViewById(R.id.ivRecordVideoRotate);
     }
 
     /**
@@ -170,6 +145,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initListener() {
         if (null != ivRecordVidoStartAndStop) {
             ivRecordVidoStartAndStop.setOnClickListener(this);
+        }
+        if (null != ivRecordVideoAddBG) {
+            ivRecordVideoAddBG.setOnClickListener(this);
+        }
+        if (null != ivRecordVideoRotate) {
+            ivRecordVideoRotate.setOnClickListener(this);
         }
     }
 
@@ -404,8 +385,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (unGrantCount > 0) {
 
         } else {
-            // 权限已经获取到，开始初始化surfaceView
-            sharedPreferences.edit().putBoolean("isFirstTime", false);
         }
     }
 
@@ -446,6 +425,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else {
                     stopRecordVideo();
                 }
+                break;
+            case R.id.ivRecordVideoAddBG:
+                // 选择为上一个视频添加bgm
+                break;
+            case R.id.ivRecordVideoRotate:
+                // 翻转相机
                 break;
         }
     }
