@@ -1,5 +1,6 @@
 package com.paulniu.media_muxer;
 
+import android.graphics.PixelFormat;
 import android.hardware.Camera;
 import android.media.MediaRecorder;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -52,6 +54,7 @@ public class RecordVideoActivity extends AppCompatActivity implements SurfaceHol
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         // 设置为全屏展示
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFormat(PixelFormat.TRANSLUCENT);
         setContentView(R.layout.activity_record_video);
 
         iv_start_stop_record = findViewById(R.id.iv_start_stop_record);
@@ -96,7 +99,7 @@ public class RecordVideoActivity extends AppCompatActivity implements SurfaceHol
                 // 设置输出地址
                 String sdpath = getSDPath();
                 if (!TextUtils.isEmpty(sdpath)) {
-                    File dir = new File(sdpath + "paulniu");
+                    File dir = new File(sdpath + "/paulniu");
                     if (!dir.exists()) {
                         dir.mkdirs();
                     }
@@ -121,9 +124,13 @@ public class RecordVideoActivity extends AppCompatActivity implements SurfaceHol
                     if (timerTask != null) {
 
                     }
+                    mRecorder.reset();
+                    Toast.makeText(RecordVideoActivity.this,"录制完成，视频地址为"+path,Toast.LENGTH_LONG).show();
+                    finish();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
+                mStartedFlag = false;
             }
         }
     }
@@ -187,13 +194,13 @@ public class RecordVideoActivity extends AppCompatActivity implements SurfaceHol
     public void surfaceCreated(SurfaceHolder surfaceHolder) {
         // 将这个surfaceHolder赋值给在oncreate中创建的surfaceHolder
         this.mSurfaceHolder = surfaceHolder;
+        startPreView(surfaceHolder);
     }
 
     @Override
     public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i1, int i2) {
         // 将当前的surfaceHolder赋值给oncreate中创建的surfaceHolder
         this.mSurfaceHolder = surfaceHolder;
-        startPreView(surfaceHolder);
     }
 
     @Override
