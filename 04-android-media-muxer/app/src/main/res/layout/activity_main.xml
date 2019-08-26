@@ -57,6 +57,19 @@
                 android:layout_marginTop="20dp"
                 android:text="解析音频(不包含视频)" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="将上面两步解析出来的视频和音频文件再合成视频文件(有视频，有音频)" />
+
+            <Button
+                android:id="@+id/muxerVideo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="合成视频" />
+
         </LinearLayout>
 
     </ScrollView>

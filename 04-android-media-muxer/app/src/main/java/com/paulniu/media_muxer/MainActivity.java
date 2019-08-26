@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private Button videoRecord;
     private Button formatVideo;
     private Button formatAudio;
+    private Button muxerVideo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this,FormatAudioActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        muxerVideo = findViewById(R.id.muxerVideo);
+        muxerVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,MuxerVideoActivity.class);
                 startActivity(intent);
             }
         });
