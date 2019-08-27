@@ -21,7 +21,7 @@ public class MyGLSurfaceViewRendered implements GLSurfaceView.Renderer {
     public void onSurfaceCreated(GL10 unused, EGLConfig config) {
         // Set the background frame color
 //        GLES20.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-        // 当MyGLSurfaceView被创建的时候，我们申明图形对象
+        // 当MyGLSurfaceView被创建的0时候，我们申明图形对象
         mTriangle = new Triangle();
         mSquare = new Square();
     }
