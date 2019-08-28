@@ -14,16 +14,18 @@ import android.util.AttributeSet;
 public class MyGLSurfaveView extends GLSurfaceView {
 
     private MyGLSurfaceViewRendered renderer;
+    private Context context;
 
     public MyGLSurfaveView(Context context) {
         super(context);
+        this.context = context;
         init();
     }
 
     private void init() {
         // 设置我们使用OpenGL的版本  2
         setEGLContextClientVersion(2);
-        renderer = new MyGLSurfaceViewRendered();
+        renderer = new MyGLSurfaceViewRendered(context);
         setRenderer(renderer);
     }
 

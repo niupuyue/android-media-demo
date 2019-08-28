@@ -19,9 +19,9 @@ public class Triangle {
     private static final int COORDS_PER_VERTEX = 3;
     // 声明三角形三个顶点的位置
     private static float triangleCoords[] = {
-            0.0f,0.622f,0.0f,// top
-            -0.5f,-0.311f,0.0f,// bottom lef
-            0.5f,-0.311f,0.0f// bottom right
+            -1f,0f,// 左下角
+            1f,0f,// 右下角
+            0f,1f// 顶角
     };
 
     // 设置颜色，分别为red,green,blue和alpha
@@ -30,14 +30,14 @@ public class Triangle {
     // 构造方法
     public Triangle(){
         // 为存放三角形坐标，初始化顶点字节缓存
-        ByteBuffer bb = ByteBuffer.allocateDirect(4 * triangleCoords.length);// 坐标数*4(float占4个字节)
-        // 使用设备的本点字节序
+        ByteBuffer bb = ByteBuffer.allocateDirect(4 * triangleCoords.length);// 分配内存空间
+        // 内存bit的排序方式和本地机器一致
         bb.order(ByteOrder.nativeOrder());
-        // 从ByteBuffer创建一个浮点缓冲
+        // 转换成float的buffer，因为这里我们存放的是float类型的顶点
         vertexBuffer = bb.asFloatBuffer();
-        // 把坐标加入到floatBuffer中
+        // 将数据放入内存中
         vertexBuffer.put(triangleCoords);
-        // 设置buffer，从第一个坐标开始读
+        // 把索引指针指向开头位置
         vertexBuffer.position(0);
     }
 

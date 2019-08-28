@@ -1,7 +1,12 @@
 package com.paulniu.media_opengl;
 
+import android.content.Context;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
+
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -15,24 +20,51 @@ import javax.microedition.khronos.opengles.GL10;
  */
 public class MyGLSurfaceViewRendered implements GLSurfaceView.Renderer {
 
-    private Triangle mTriangle;
-    private Square mSquare;
+    private Context context;
+    private final float[] vertexData = {
+            -1f, 0f,// 左下角
+            1f, 0f,// 右下角
+            0f, 1f// 顶角
+    };
 
-    public void onSurfaceCreated(GL10 unused, EGLConfig config) {
-        // Set the background frame color
-//        GLES20.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-        // 当MyGLSurfaceView被创建的0时候，我们申明图形对象
-        mTriangle = new Triangle();
-        mSquare = new Square();
+    private FloatBuffer vertexBuffer;
+    private int program;
+    private int position;
+    private int color;
+
+    public MyGLSurfaceViewRendered(Context context) {
+        this.context = context;
+        vertexBuffer = ByteBuffer.allocateDirect(vertexData.length * 4)
+                .order(ByteOrder.nativeOrder())
+                .asFloatBuffer()
+                .put(ShaderUtils.fBuffer(vertexData));
+        vertexBuffer.position(0);
     }
 
-    public void onDrawFrame(GL10 unused) {
-        // Redraw background color
-        GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
+    public void onSurfaceCreated(GL10 unused, EGLConfig config) {
+        String vertexSource = ShaderUtils.readRawText(context, R.raw.vertex_shader);
+        String fragmentSource = ShaderUtils.readRawText(context, R.raw.fragment_shader);
+        program = ShaderUtils.createProgram(vertexSource, fragmentSource);
+        if (program > 0) {
+            position = GLES20.glGetAttribLocation(program, "av_Position");
+            color = GLES20.glGetUniformLocation(program, "af_Color");
+        }
     }
 
     public void onSurfaceChanged(GL10 unused, int width, int height) {
         GLES20.glViewport(0, 0, width, height);
     }
+
+    public void onDrawFrame(GL10 unused) {
+        GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
+        GLES20.glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+        GLES20.glUseProgram(program);
+        GLES20.glUniform4f(color, 1f, 0f, 0f, 1f);
+        GLES20.glEnableVertexAttribArray(position);
+
+        GLES20.glVertexAttribPointer(position, 2, GLES20.GL_FLOAT, false, 8, vertexBuffer);
+        GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, 3);
+    }
+
 
 }
