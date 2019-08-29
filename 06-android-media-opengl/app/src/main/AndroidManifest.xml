@@ -28,6 +28,7 @@
         <activity android:name=".demo03.MyOpenGLTriangleActivity" />
         <activity android:name=".demo04.MyOpenGLColorsTRiangleActivity" />
         <activity android:name=".demo05.MyOpenGLSquareActivity" />
+        <activity android:name=".demo06.MyOpenGLOvalActivity" />
     </application>
 
 </manifest>
