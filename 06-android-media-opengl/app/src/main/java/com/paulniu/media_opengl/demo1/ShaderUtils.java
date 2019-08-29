@@ -1,4 +1,4 @@
-package com.paulniu.media_opengl;
+package com.paulniu.media_opengl.demo1;
 
 import android.content.Context;
 import android.opengl.GLES20;

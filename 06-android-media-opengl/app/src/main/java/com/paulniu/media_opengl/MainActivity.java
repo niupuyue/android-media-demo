@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.paulniu.media_opengl.demo1.OpenGLSimpleActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button btn_01;
@@ -20,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         btn_01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,OpenGLSimpleActivity.class);
+                Intent intent = new Intent(MainActivity.this, OpenGLSimpleActivity.class);
                 startActivity(intent);
             }
         });

@@ -1,8 +1,10 @@
-package com.paulniu.media_opengl;
+package com.paulniu.media_opengl.demo1;
 
 import android.content.Context;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView;
+
+import com.paulniu.media_opengl.R;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -22,9 +24,9 @@ public class MyGLSurfaceViewRendered implements GLSurfaceView.Renderer {
 
     private Context context;
     private final float[] vertexData = {
-            -1f, 0f,// 左下角
-            1f, 0f,// 右下角
-            0f, 1f// 顶角
+            0.0f,0.322f,// top
+            -0.5f,-0.311f,// bottom lef
+            0.5f,-0.311f// bottom right
     };
 
     private FloatBuffer vertexBuffer;

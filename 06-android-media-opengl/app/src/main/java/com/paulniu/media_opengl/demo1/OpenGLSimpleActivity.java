@@ -1,10 +1,11 @@
-package com.paulniu.media_opengl;
+package com.paulniu.media_opengl.demo1;
 
-import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.paulniu.media_opengl.demo1.MyGLSurfaveView;
 
 /**
  * Coder: niupuyue

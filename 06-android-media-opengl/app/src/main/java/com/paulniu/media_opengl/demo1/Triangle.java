@@ -1,4 +1,4 @@
-package com.paulniu.media_opengl;
+package com.paulniu.media_opengl.demo1;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

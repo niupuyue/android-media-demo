@@ -1,8 +1,9 @@
-package com.paulniu.media_opengl;
+package com.paulniu.media_opengl.demo1;
 
 import android.content.Context;
 import android.opengl.GLSurfaceView;
-import android.util.AttributeSet;
+
+import com.paulniu.media_opengl.demo1.MyGLSurfaceViewRendered;
 
 /**
  * Coder: niupuyue
