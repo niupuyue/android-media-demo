@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.paulniu.media_opengl.demo03.MyOpenGLTriangleActivity;
+import com.paulniu.media_opengl.demo04.MyOpenGLColorsTRiangleActivity;
 import com.paulniu.media_opengl.demo1.OpenGLSimpleActivity;
 import com.paulniu.media_opengl.demo2.OpenGLSimple2Activity;
 
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btn_01;
     private Button btn_02;
     private Button btn_03;
+    private Button btn_04;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, MyOpenGLTriangleActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_04 = findViewById(R.id.btn_04);
+        btn_04.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MyOpenGLColorsTRiangleActivity.class);
                 startActivity(intent);
             }
         });
