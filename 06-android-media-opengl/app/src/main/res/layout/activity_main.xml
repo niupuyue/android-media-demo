@@ -30,4 +30,10 @@
         android:layout_height="wrap_content"
         android:text="使用相机绘制彩色三角形" />
 
+    <Button
+        android:id="@+id/btn_05"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="绘制多边形" />
+
 </LinearLayout>
