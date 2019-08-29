@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <Button
@@ -10,5 +11,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="简单示例" />
+
+    <Button
+        android:id="@+id/btn_02"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="三角形另一种实现方法" />
+
+    <Button
+        android:id="@+id/btn_03"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="使用相机绘制三角形" />
 
 </LinearLayout>

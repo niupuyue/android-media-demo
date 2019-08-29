@@ -24,6 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".demo1.OpenGLSimpleActivity" />
+        <activity android:name=".demo2.OpenGLSimple2Activity" />
+        <activity android:name=".demo03.MyOpenGLTriangleActivity" />
     </application>
 
 </manifest>

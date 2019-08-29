@@ -24,9 +24,9 @@ public class MyGLSurfaceViewRendered implements GLSurfaceView.Renderer {
 
     private Context context;
     private final float[] vertexData = {
-            0.0f,0.322f,// top
-            -0.5f,-0.311f,// bottom lef
-            0.5f,-0.311f// bottom right
+            0.0f, 0.322f,// top
+            -0.5f, -0.311f,// bottom lef
+            0.5f, -0.311f// bottom right
     };
 
     private FloatBuffer vertexBuffer;
