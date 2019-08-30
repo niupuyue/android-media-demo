@@ -29,6 +29,11 @@
         <activity android:name=".demo04.MyOpenGLColorsTRiangleActivity" />
         <activity android:name=".demo05.MyOpenGLSquareActivity" />
         <activity android:name=".demo06.MyOpenGLOvalActivity" />
+        <activity android:name=".demo07.MyOpenGLCubeActivity" />
+        <activity android:name=".demo08.MyOpenGLConeActivity" />
+        <activity android:name=".demo10.MyOpenGLSphereActivity" />
+        <activity android:name=".demo11.MyOpenGLSphere2Activity" />
+        <activity android:name=".demo09.MyOpenGLCylinderActivity" />
     </application>
 
 </manifest>

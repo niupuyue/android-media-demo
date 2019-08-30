@@ -11,7 +11,12 @@ import com.paulniu.media_opengl.demo03.MyOpenGLTriangleActivity;
 import com.paulniu.media_opengl.demo04.MyOpenGLColorsTRiangleActivity;
 import com.paulniu.media_opengl.demo05.MyOpenGLSquareActivity;
 import com.paulniu.media_opengl.demo06.MyOpenGLOvalActivity;
+import com.paulniu.media_opengl.demo07.MyOpenGLCubeActivity;
+import com.paulniu.media_opengl.demo08.MyOpenGLConeActivity;
+import com.paulniu.media_opengl.demo09.MyOpenGLCylinderActivity;
 import com.paulniu.media_opengl.demo1.OpenGLSimpleActivity;
+import com.paulniu.media_opengl.demo10.MyOpenGLSphereActivity;
+import com.paulniu.media_opengl.demo11.MyOpenGLSphere2Activity;
 import com.paulniu.media_opengl.demo2.OpenGLSimple2Activity;
 
 public class MainActivity extends AppCompatActivity {
@@ -91,7 +96,8 @@ public class MainActivity extends AppCompatActivity {
         btn_07.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(MainActivity.this,)
+                Intent intent = new Intent(MainActivity.this, MyOpenGLCubeActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -99,7 +105,8 @@ public class MainActivity extends AppCompatActivity {
         btn_08.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(MainActivity.this, MyOpenGLConeActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -107,7 +114,8 @@ public class MainActivity extends AppCompatActivity {
         btn_09.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(MainActivity.this, MyOpenGLCylinderActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -115,7 +123,8 @@ public class MainActivity extends AppCompatActivity {
         btn_10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(MainActivity.this, MyOpenGLSphereActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -123,7 +132,8 @@ public class MainActivity extends AppCompatActivity {
         btn_11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(MainActivity.this, MyOpenGLSphere2Activity.class);
+                startActivity(intent);
             }
         });
     }
