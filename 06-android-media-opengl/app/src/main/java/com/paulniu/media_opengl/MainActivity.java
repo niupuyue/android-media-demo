@@ -22,6 +22,11 @@ public class MainActivity extends AppCompatActivity {
     private Button btn_04;
     private Button btn_05;
     private Button btn_06;
+    private Button btn_07;
+    private Button btn_08;
+    private Button btn_09;
+    private Button btn_10;
+    private Button btn_11;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +84,46 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, MyOpenGLOvalActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        btn_07 = findViewById(R.id.btn_07);
+        btn_07.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this,)
+            }
+        });
+
+        btn_08 = findViewById(R.id.btn_08);
+        btn_08.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        btn_09 = findViewById(R.id.btn_09);
+        btn_09.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        btn_10 = findViewById(R.id.btn_10);
+        btn_10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        btn_11 = findViewById(R.id.btn_11);
+        btn_11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }

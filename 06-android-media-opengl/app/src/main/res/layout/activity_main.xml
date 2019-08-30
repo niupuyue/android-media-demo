@@ -42,4 +42,34 @@
         android:layout_height="wrap_content"
         android:text="绘制圆形" />
 
+    <Button
+        android:id="@+id/btn_07"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="绘制彩色正方体" />
+
+    <Button
+        android:id="@+id/btn_08"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="绘制圆锥体" />
+
+    <Button
+        android:id="@+id/btn_09"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="绘制圆柱" />
+
+    <Button
+        android:id="@+id/btn_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="绘制球体" />
+
+    <Button
+        android:id="@+id/btn_11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="绘制带光源的球体" />
+
 </LinearLayout>
