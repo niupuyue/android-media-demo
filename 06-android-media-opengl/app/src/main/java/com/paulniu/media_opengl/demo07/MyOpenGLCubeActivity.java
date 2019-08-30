@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
  * Coder: niupuyue
  * Date: 2019/8/30
  * Time: 10:12
- * Desc:
+ * Desc: 绘制立方体
  * Version:
  */
 public class MyOpenGLCubeActivity extends AppCompatActivity {

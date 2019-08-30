@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
  * Coder: niupuyue
  * Date: 2019/8/29
  * Time: 17:34
- * Desc:
+ * Desc: 绘制圆形
  * Version:
  */
 public class MyOpenGLOvalActivity extends AppCompatActivity {

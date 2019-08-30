@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
  * Coder: niupuyue
  * Date: 2019/8/30
  * Time: 10:12
- * Desc:
+ * Desc: 绘制圆锥体
  * Version:
  */
 public class MyOpenGLConeActivity extends AppCompatActivity {

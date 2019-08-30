@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
  * Coder: niupuyue
  * Date: 2019/8/29
  * Time: 16:19
- * Desc:
+ * Desc: 绘制多边形
  * Version:
  */
 public class MyOpenGLSquareActivity extends AppCompatActivity {
