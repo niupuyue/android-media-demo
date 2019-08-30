@@ -41,10 +41,11 @@ public class MyOpenGLRenderSquare implements GLSurfaceView.Renderer {
     private float[] mvpMatrix = new float[16];
 
     private float[] squareCoords = {
-            -0.5f, 0.5f, 0.0f, // top left
-            -0.5f, -0.5f, 0.0f, // bottom left
-            0.5f, -0.5f, 0.0f, // bottom right
-            0.5f, 0.5f, 0.0f  // top right
+            -0.3f, 0.28f, 0f,
+            -0.28f, -0.35f, 0f,
+            0.28f, -0.35f, 0f,
+            0.3f, 0.35f, 0f,
+            0f, 0.5f, 0f
     };
     private float[] colorCoords = {
             0.0f, 1.0f, 0.0f, 1.0f,
@@ -52,7 +53,7 @@ public class MyOpenGLRenderSquare implements GLSurfaceView.Renderer {
             0.0f, 0.0f, 1.0f, 1.0f
     };
     private short[] indexCoords = {
-            0, 1, 2, 0, 2, 3
+            0, 1, 2, 0, 2, 3, 0, 3, 4
     };
 
     public MyOpenGLRenderSquare(Context context) {
