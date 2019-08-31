@@ -43,14 +43,14 @@ public class MyOpenGLRenderCube implements GLSurfaceView.Renderer {
     private float[] mvpMatrix = new float[16];
 
     private float[] colorCoords = {
-            0f,1f,0f,1f,
-            0f,1f,0f,1f,
-            0f,1f,0f,1f,
-            0f,1f,0f,1f,
-            1f,0f,0f,1f,
-            1f,0f,0f,1f,
-            1f,0f,0f,1f,
-            1f,0f,0f,1f,
+            0f, 1f, 0f, 1f,
+            0f, 1f, 0f, 1f,
+            0f, 1f, 0f, 1f,
+            0f, 1f, 0f, 1f,
+            1f, 0f, 0f, 1f,
+            1f, 0f, 0f, 1f,
+            1f, 0f, 0f, 1f,
+            1f, 0f, 0f, 1f,
     };
 
     private float[] vertexCoords = {
@@ -72,6 +72,7 @@ public class MyOpenGLRenderCube implements GLSurfaceView.Renderer {
             1, 2, 5, 2, 5, 6,// 前面
             2, 6, 7, 2, 3, 7// 右面
     };
+    private float[] projectMatrix1;
 
     public MyOpenGLRenderCube(Context context) {
         this.context = context;
@@ -114,27 +115,27 @@ public class MyOpenGLRenderCube implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceChanged(GL10 gl10, int i, int i1) {
-        float ratio = (float)i/i1;
-        Matrix.frustumM(projectMatrix,0,-ratio,ratio,-1,1,3,20);
-        Matrix.setLookAtM(viewMatrix,0,5.0f,5.0f,10.0f,0f,0f,0f,0f,1f,0f);
-        Matrix.multiplyMM(mvpMatrix,0,projectMatrix,0,viewMatrix,0);
+        float ratio = (float) i / i1;
+        Matrix.frustumM(projectMatrix, 0, -ratio, ratio, -1, 1, 3, 20);
+        Matrix.setLookAtM(viewMatrix, 0, 5.0f, 5.0f, 10.0f, 0f, 0f, 0f, 0f, 1f, 0f);
+        Matrix.multiplyMM(mvpMatrix, 0, projectMatrix1, 0, viewMatrix, 0);
     }
 
     @Override
     public void onDrawFrame(GL10 gl10) {
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
-        GLES20.glClearColor(0.5f,0.5f,0.5f,1f);
+        GLES20.glClearColor(0.5f, 0.5f, 0.5f, 1f);
 
         GLES20.glUseProgram(program);
 
         GLES20.glEnableVertexAttribArray(positionHandler);
-        GLES20.glVertexAttribPointer(positionHandler,3,GLES20.GL_FLOAT,false,0,vertexBuffer);
+        GLES20.glVertexAttribPointer(positionHandler, 3, GLES20.GL_FLOAT, false, 0, vertexBuffer);
 
         GLES20.glEnableVertexAttribArray(colorHandler);
-        GLES20.glVertexAttribPointer(colorHandler,4,GLES20.GL_FLOAT,false,0,colorBuffer);
+        GLES20.glVertexAttribPointer(colorHandler, 4, GLES20.GL_FLOAT, false, 0, colorBuffer);
 
-        GLES20.glUniformMatrix4fv(matrixHandler,1,false,mvpMatrix,0);
+        GLES20.glUniformMatrix4fv(matrixHandler, 1, false, mvpMatrix, 0);
 
-        GLES20.glDrawElements(GLES20.GL_TRIANGLES,indexCoords.length,GLES20.GL_UNSIGNED_SHORT,indexBuffer);
+        GLES20.glDrawElements(GLES20.GL_TRIANGLES, indexCoords.length, GLES20.GL_UNSIGNED_SHORT, indexBuffer);
     }
 }
