@@ -44,6 +44,7 @@ public class MyOpenGLRenderCone implements GLSurfaceView.Renderer {
         this.context = context;
 
 
+
         // 设置颜色
         ByteBuffer cc = ByteBuffer.allocateDirect(colorCoords.length * 4);
         cc.order(ByteOrder.nativeOrder());
